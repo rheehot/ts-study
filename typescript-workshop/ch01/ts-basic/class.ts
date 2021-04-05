@@ -8,13 +8,8 @@ interface Product{
 }
 
 class Cart{
-    // protected user : User
-    private store : object
-
-    constructor(public user : User){
-        // this.user = user
-        this.store = {}
-    }
+    constructor(public user : User, private store : object = {}){ }
+    
     public put(id : string, product : Product){
         this.store[id] = product
     }
