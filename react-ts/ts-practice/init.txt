@@ -1,0 +1,7 @@
+ts환경 설정
+1. yarn init -y
+2. yarn add typescript ts-node
+3. yarn run tsc --init
+
+컴파일
+4. yarn run tsc
