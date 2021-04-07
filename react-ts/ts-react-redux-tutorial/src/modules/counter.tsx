@@ -1,39 +1,20 @@
-const INCREASE = "counter/INCREASE" as const;
-const DECREASE = "counter/DECREASE" as const;
-const INCREASE_BY = "counter/INCREASE_BY" as const;
+import { createAction, ActionType, createReducer } from "typesafe-actions";
 
-export const increase = () => ({ type: INCREASE });
-export const decrease = () => ({ type: DECREASE });
-export const increase_by = (diff: number) => ({
-  type: INCREASE_BY,
-  payload: diff,
-});
+export const increase = createAction("counter/INCREASE")();
+export const decrease = createAction("counter/DECREASE")();
+export const increase_by = createAction("counter/INCREASE_BY")<number>();
 
-type CounterState = {
-  count: number;
-};
+type CounterState = { count: number };
+const initialState: CounterState = { count: 0 };
 
-const initialState: CounterState = {
-  count: 0,
-};
+const actions = { increase, decrease, increase_by };
+type CounterAction = ActionType<typeof actions>;
 
-type CounterAction =
-  | ReturnType<typeof increase>
-  | ReturnType<typeof decrease>
-  | ReturnType<typeof increase_by>;
+const counter = createReducer<CounterState, CounterAction>(initialState)
+  .handleAction(increase, (state) => ({ count: state.count + 1 }))
+  .handleAction(decrease, (state) => ({ count: state.count - 1 }))
+  .handleAction(increase_by, (state, action) => ({
+    count: state.count + action.payload,
+  }));
 
-export default function counter(
-  state: CounterState = initialState,
-  action: CounterAction
-) {
-  switch (action.type) {
-    case INCREASE:
-      return { count: state.count + 1 };
-    case DECREASE:
-      return { count: state.count - 1 };
-    case INCREASE_BY:
-      return { count: state.count + action.payload };
-    default:
-      return state;
-  }
-}
+export default counter;
