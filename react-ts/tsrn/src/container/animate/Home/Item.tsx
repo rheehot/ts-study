@@ -8,6 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import LinearGradient from 'react-native-linear-gradient';
 import {items} from './Model';
+import {AnimateHomeScreenProps} from './AnimateHome';
 
 const {width, height} = Dimensions.get('window');
 const MIN_HEIGHT = 128;
@@ -54,18 +55,21 @@ interface Item {
   top: number;
   colors: (string | number)[];
   picture: number;
+  navigationComponentName: string;
 }
 
 interface ItemProps {
   index: number;
   y: Animated.SharedValue<number>;
   item: Item;
+  navigation: AnimateHomeScreenProps;
 }
 
 const Item = ({
+  navigation,
   y,
   index,
-  item: {title, subtitle, top, colors, picture},
+  item: {title, subtitle, top, colors, picture, navigationComponentName},
 }: ItemProps) => {
   const style = useAnimatedStyle(() => {
     return {
@@ -96,9 +100,15 @@ const Item = ({
       [-top, 0],
     ),
   }));
+
+  const onPress = (next: string) => {
+    navigation.navigate(next);
+  };
+
   return (
     <LinearGradient colors={colors}>
-      <TouchableWithoutFeedback onPress={() => Alert.alert('Pressed!')}>
+      <TouchableWithoutFeedback
+        onPress={() => onPress(navigationComponentName)}>
         <Animated.View style={[styles.container, style]}>
           <Animated.Image
             source={picture}

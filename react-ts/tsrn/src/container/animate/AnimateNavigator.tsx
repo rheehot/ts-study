@@ -1,14 +1,16 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
-import {RouteProp} from '@react-navigation/native';
-import {
-  createStackNavigator,
-  StackNavigationProp,
-} from '@react-navigation/stack';
+
+import {createStackNavigator} from '@react-navigation/stack';
 import AnimateHome from './Home/AnimateHome';
+import CounterContainer from '../Counter/CounterContainer';
+import GithubContainer from '../Github/GithubContainer';
+import AwesomeSlideContainer from '../Slide/AwesomeSlideContainer';
 
 export type RootStackParamList = {
   AnimateHome: undefined;
+  CounterContainer: undefined;
+  GithubContainer: undefined;
+  AwesomeSlideContainer: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -69,7 +71,15 @@ function AnimateNavigator() {
           headerShown: false,
         }}
       />
-      {/* <Stack.Screen name="Profile" component={Profile} /> */}
+      <Stack.Screen name="CounterContainer" component={CounterContainer} />
+      <Stack.Screen name="GithubContainer" component={GithubContainer} />
+      <Stack.Screen
+        name="AwesomeSlideContainer"
+        component={AwesomeSlideContainer}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 }
