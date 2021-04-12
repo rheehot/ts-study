@@ -8,6 +8,7 @@ import {
   TextInput,
   Platform,
   Dimensions,
+  Text,
 } from 'react-native';
 
 type Story = {
@@ -15,15 +16,11 @@ type Story = {
   source: number;
 };
 
-type StoryProps = {
-  story: Story;
-};
-
 const {width, height} = Dimensions.get('window');
 
 function Story({story}: Story) {
   const {id, source} = story;
-  console.log(id, source);
+  console.log('story : ', story);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>

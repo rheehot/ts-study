@@ -1,14 +1,34 @@
 import React, {useRef} from 'react';
-import {StyleSheet, Animated, Dimensions, Platform, View} from 'react-native';
+import {
+  StyleSheet,
+  Animated,
+  Dimensions,
+  Platform,
+  View,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import {items} from './Model';
 import Story from './Story';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../animate/AnimateNavigator';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
+type AwesomeSlideScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'AwesomeSlideContainer'
+>;
+
+type AwesomeSlideContainerProps = {
+  navigation: AwesomeSlideScreenNavigationProp;
+};
 
 const {width} = Dimensions.get('window');
 const perspective = width;
 const angle = Math.atan(perspective / (width / 2));
 const ratio = Platform.OS === 'ios' ? 2 : 1.2;
 
-function AwesomeSlideContainer() {
+function AwesomeSlideContainer({navigation}: AwesomeSlideContainerProps) {
   const scrollX = useRef(new Animated.Value(0));
 
   function getStyle(index: number) {
@@ -65,8 +85,16 @@ function AwesomeSlideContainer() {
       opacity,
     };
   }
+
+  const goBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={goBack} style={styles.navigationButton}>
+        <AntDesign name="arrowleft" size={25} color="#fff" />
+      </TouchableOpacity>
       {items.map((story, i) => (
         <Animated.View style={getStyle(i)} key={story.id}>
           <Story story={story} />
@@ -97,6 +125,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'black',
+  },
+  navigationButton: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    top: 55,
+    left: 20,
+    zIndex: 999,
   },
 });
 

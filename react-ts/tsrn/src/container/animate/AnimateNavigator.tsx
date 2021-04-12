@@ -5,61 +5,17 @@ import AnimateHome from './Home/AnimateHome';
 import CounterContainer from '../Counter/CounterContainer';
 import GithubContainer from '../Github/GithubContainer';
 import AwesomeSlideContainer from '../Slide/AwesomeSlideContainer';
+import Wallet from '../Wallet/Wallet';
 
 export type RootStackParamList = {
   AnimateHome: undefined;
   CounterContainer: undefined;
   GithubContainer: undefined;
   AwesomeSlideContainer: undefined;
+  Wallet: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
-
-// type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
-// type HomeProp = {
-//   navigation: HomeScreenNavigationProp;
-// };
-
-// const Home = ({navigation}: HomeProp) => {
-//   const user = {
-//     userID: 1,
-//     username: 'WonyJeong',
-//   };
-
-//   return (
-//     <View>
-//       <TouchableOpacity
-//         onPress={() => {
-//           navigation.navigate('Profile', user);
-//         }}>
-//         <Text>GO TO NEXT SCREEN!</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
-
-// type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'Profile'>;
-
-// type ProfileScreenNavigationProp = StackNavigationProp<
-//   RootStackParamList,
-//   'Profile'
-// >;
-
-// type Props = {
-//   route: ProfileScreenRouteProp;
-//   navigation: ProfileScreenNavigationProp;
-// };
-
-// const Profile = ({route, navigation}: Props) => {
-//   const userID = route.params?.userID ?? null;
-//   const username = route.params?.username ?? null;
-//   return (
-//     <View>
-//       <Text>{userID}</Text>
-//       <Text>{username}</Text>
-//     </View>
-//   );
-// };
 
 function AnimateNavigator() {
   return (
@@ -80,6 +36,7 @@ function AnimateNavigator() {
           headerShown: false,
         }}
       />
+      <Stack.Screen name="Wallet" component={Wallet} />
     </Stack.Navigator>
   );
 }

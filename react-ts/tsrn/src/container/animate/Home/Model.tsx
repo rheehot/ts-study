@@ -32,12 +32,12 @@ export const items = [
     navigationComponentName: 'AwesomeSlideContainer',
   },
   {
-    title: 'IN BOUTIQUES',
-    subtitle: "Métiers d'art 2019/20",
+    title: 'Awesome Wallet',
+    subtitle: 'Transition Wallet',
     top: 0,
     colors: ['#212529', '#212529', '#212529'],
     picture: require('../../../assets/img4.jpg'),
-    navigationComponentName: 'CounterContainer',
+    navigationComponentName: 'Wallet',
   },
   {
     title: 'Haute Couture',

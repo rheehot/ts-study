@@ -28,9 +28,11 @@ const AnimateHome = ({navigation}: Props) => {
   return (
     <>
       <Animated.ScrollView
+        showsVerticalScrollIndicator={false}
         onScroll={onScroll}
         scrollEventThrottle={16}
-        snapToInterval={MAX_HEIGHT}>
+        snapToInterval={MAX_HEIGHT}
+        style={{backgroundColor: '#212529'}}>
         <Animated.View style={styles.container}>
           {items.map((item, index) => (
             <Item
