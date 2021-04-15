@@ -5,7 +5,6 @@ import {
   Dimensions,
   Platform,
   View,
-  Text,
   TouchableOpacity,
 } from 'react-native';
 import {items} from './Model';
@@ -23,6 +22,7 @@ type AwesomeSlideContainerProps = {
   navigation: AwesomeSlideScreenNavigationProp;
 };
 
+//define animation variable
 const {width} = Dimensions.get('window');
 const perspective = width;
 const angle = Math.atan(perspective / (width / 2));
