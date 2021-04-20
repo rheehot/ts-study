@@ -1,0 +1,51 @@
+export const items = [
+  {
+    title: 'Counter 구현하기',
+    subtitle: 'redux 기초 예제',
+    top: 0,
+    picture: require('../../assets/img1.jpg'),
+    navigationComponentName: 'CounterContainer',
+  },
+  {
+    title: 'Github API 예제',
+    subtitle: '리덕스 미들웨어 이해하기',
+    top: 0,
+    picture: require('../../assets/img2.jpg'),
+    navigationComponentName: 'GithubContainer',
+  },
+  {
+    title: 'Awesome Cube Slide',
+    subtitle: 'Awesome Slide Component',
+    top: 0,
+    picture: require('../../assets/img3.jpg'),
+    navigationComponentName: 'AwesomeSlideContainer',
+  },
+  {
+    title: 'Awesome Wallet',
+    subtitle: 'Transition Wallet',
+    top: 0,
+    picture: require('../../assets/img4.jpg'),
+    navigationComponentName: 'Wallet',
+  },
+  {
+    title: 'Haute Couture',
+    subtitle: 'FALL-WINTER 2020/21',
+    top: 50,
+    picture: require('../../assets/img5.jpg'),
+    navigationComponentName: 'CounterContainer',
+  },
+  {
+    title: 'Balade en Méditerranée',
+    subtitle: 'CRUISE 2020/21',
+    top: 0,
+    picture: require('../../assets/img6.jpg'),
+    navigationComponentName: 'CounterContainer',
+  },
+  {
+    title: 'Spring-Summer 2020 Campaign',
+    subtitle: 'EYEWEAR',
+    top: 0,
+    picture: require('../../assets/img7.jpg'),
+    navigationComponentName: 'CounterContainer',
+  },
+];
